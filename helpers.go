@@ -9,9 +9,10 @@ import (
 	"strings"
 )
 
-func askQuestion() string {
+func (c *Cache) askQuestion() string {
 	for {
-		data, err := fetch()
+		data := <-c.ch
+		err := <-c.errCh
 		if err != nil {
 			log.Print(err)
 			continue
