@@ -6,11 +6,10 @@ import (
 
 func main() {
 	cache := Cache{
-		ch:    make(chan Quiz, 10),
-		errCh: make(chan error),
+		ch: make(chan Quiz, 10),
 	}
 
-	go cache.fetch()
+	go cache.buffering()
 	for {
 		answer := cache.askQuestion()
 		input := read()

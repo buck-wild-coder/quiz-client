@@ -12,11 +12,6 @@ import (
 func (c *Cache) askQuestion() string {
 	for {
 		data := <-c.ch
-		err := <-c.errCh
-		if err != nil {
-			log.Print(err)
-			continue
-		}
 		answer, err := printFormat(data)
 		if err != nil {
 			log.Print(err)
